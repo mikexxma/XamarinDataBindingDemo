@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local ="clr-namespace:ListViewBinding;assembly=ListViewBinding"
+             x:Class="ListViewBinding.ListViewPage">
+  <Grid>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="300"></RowDefinition>
+      <RowDefinition Height="300"></RowDefinition>
+      <RowDefinition Height="*"></RowDefinition>
+    </Grid.RowDefinitions>
+    <ListView ItemsSource="{x:Static local:ListViewMode.All}" RowHeight="100" Grid.Row="0">
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <ViewCell.View>
+              <Button Text="{Binding BtName}" Clicked="OnBtClick"></Button>
+            </ViewCell.View>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+    <RelativeLayout Grid.Row="1">
+      <Image BindingContext="{x:Reference MySlider}" x:Name ="MyImg" WidthRequest="{Binding Value}" HeightRequest="{Binding Value}" BackgroundColor="Red"></Image>
+
+    </RelativeLayout>
+    <Slider Grid.Row="2" x:Name="MySlider" Maximum="360"></Slider>
+  </Grid>
+  
+  
+</ContentPage>
